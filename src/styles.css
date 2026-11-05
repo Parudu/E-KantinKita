@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cream: #f4efe6;
+  --color-paper: #fffdf8;
+  --color-ink: #1f1a17;
+  --color-muted: #6f655c;
+  --color-line: #e4d9cc;
+  --color-chili: #c23b22;
+  --color-foam: #f8e7e1;
+  --color-leaf: #2f6b4f;
+  --color-sea: #1d5c73;
+  --color-mango: #a15c12;
+  --color-leaf-soft: #e5f0e8;
+  --color-sea-soft: #e3f1f4;
+  --color-mango-soft: #f8ecd9;
+  --color-ink-soft: #ece7e0;
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces", Georgia, serif;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background: var(--color-cream);
+    color: var(--color-ink);
+    line-height: 1.5;
+    text-wrap: pretty;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    text-wrap: balance;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+[data-theme="chili"] {
+  --canteen: var(--color-chili);
+  --canteen-soft: var(--color-foam);
+}
+[data-theme="leaf"] {
+  --canteen: var(--color-leaf);
+  --canteen-soft: var(--color-leaf-soft);
+}
+[data-theme="sea"] {
+  --canteen: var(--color-sea);
+  --canteen-soft: var(--color-sea-soft);
+}
+[data-theme="mango"] {
+  --canteen: var(--color-mango);
+  --canteen-soft: var(--color-mango-soft);
+}
+[data-theme="ink"] {
+  --canteen: var(--color-ink);
+  --canteen-soft: var(--color-ink-soft);
+}
+
+.theme-bar {
+  background: var(--canteen);
+}
+.theme-soft {
+  background: var(--canteen-soft);
+  color: var(--canteen);
+}
+.swatch {
+  background: var(--canteen);
+}
+.swatch[aria-pressed="true"] {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 3px;
+}
+
+@keyframes kantin-pulse {
+  0% {
+    transform: scale(0.82);
+    opacity: 0.55;
+  }
+  100% {
+    transform: scale(1.45);
+    opacity: 0;
+  }
+}
+
+.ring-pulse {
+  animation: kantin-pulse 1.6s ease-out infinite;
+}
+.ring-pulse-2 {
+  animation-delay: 0.45s;
+}
+.ring-pulse-3 {
+  animation-delay: 0.9s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ring-pulse {
+    animation: none;
+    opacity: 0.35;
+  }
+}
