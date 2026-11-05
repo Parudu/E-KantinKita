@@ -1,0 +1,11 @@
+import { betterAuth } from "better-auth";
+
+export const auth = betterAuth({
+  // ...konfigurasi lain
+  trustedOrigins: [
+    "http://localhost:3000",                    // development
+    "https://e-kantin-kita.vercel.app",         // production
+    // kalau pakai custom domain, tambahkan juga:
+    // "https://domainkamu.com",
+  ],
+});
